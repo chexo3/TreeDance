@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreeDance", "TreeDance.csproj", "{B6B20B3E-D7E9-4394-AEDB-53DD72DCCB86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6B20B3E-D7E9-4394-AEDB-53DD72DCCB86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6B20B3E-D7E9-4394-AEDB-53DD72DCCB86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6B20B3E-D7E9-4394-AEDB-53DD72DCCB86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6B20B3E-D7E9-4394-AEDB-53DD72DCCB86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34F66A2C-D029-4EB6-B555-B4C37D3DB0E3}
+	EndGlobalSection
+EndGlobal

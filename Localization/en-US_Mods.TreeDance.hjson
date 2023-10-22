@@ -1,0 +1,20 @@
+# This file will automatically update with entries for new content after a build and reload
+
+Configs: {
+	Settings: {
+		TreeDanceToggle: {
+			Tooltip: Whether dancing to grow trees is enabled. This is the mod's main feature.
+			Label: Tree Dancing
+		}
+
+		Headers.TreeDanceToggle: General Settings
+		DisplayName: Settings
+	}
+}
+
+Buffs: {
+	TreeDancingBuff: {
+		DisplayName: Tree Dancing
+		Description: Your smooth moves make trees grow faster!
+	}
+}
