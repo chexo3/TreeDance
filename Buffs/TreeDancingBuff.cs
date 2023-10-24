@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using TreeDance;
-
+/*
 namespace TreeDance.Buffs
 {
     public class TreeDancingBuff : ModBuff
@@ -42,3 +42,4 @@ namespace TreeDance.Buffs
 
     }
 }
+*/
