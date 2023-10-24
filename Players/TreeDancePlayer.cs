@@ -6,7 +6,15 @@ namespace TreeDance.Players
     {
         public override void PreUpdateBuffs()
         {
-            base.PreUpdateBuffs();
+            /*
+             
+             if (BuffActive  !=  BuffCheckMet)
+             {
+                BuffShouldBe =  BuffCheckMet
+             }
+             
+             Thanks kurti256 on tModLoader Discord
+             */
         }
     }
 }

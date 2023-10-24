@@ -18,8 +18,11 @@ namespace TreeDance.Buffs
             Main.buffNoTimeDisplay[Type] = true; // The time remaining won't display on this buff
             Main.buffNoSave[Type] = true; // This buff won't save when you exit the world
             BuffID.Sets.TimeLeftDoesNotDecrease[Type] = true; // This buff's timer will not decrease
+            BuffID.Sets.NurseCannotRemoveDebuff[Type] = true; // This buff cannot be removed by the nurse
 
         }
+
+
 
         public override bool PreDraw(SpriteBatch spriteBatch, int buffIndex, ref BuffDrawParams drawParams) // Prevent buff from being drawn
         {
@@ -32,16 +35,7 @@ namespace TreeDance.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            /*
-             
-            Procedure is going to be:
-
-            1. Player update checks if it should add this buff, breaking out early if the buff is already active
-            2. Buff update will check if buff should be removed, and will remove itself and break out early if so
-            3. Both above checks will use a method in the buff class to do this, but will behave differently depending on the result
-            4. If buff update doesn't decide to remove itself, it will then run the tree growing code.
-             
-             */
+            //I'm just going to add and remove the buff in the player class itself.
 
             treeDanceLogger.Info("test");
         }
