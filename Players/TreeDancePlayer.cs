@@ -3,13 +3,13 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using TreeDance;
 
 namespace TreeDance.Players
 {
     
     public class TreeDancePlayer : ModPlayer
     {
-        private ILog treeDanceLogger = ModContent.GetInstance<TreeDance>().Logger;
         private int prevDirection = 0;
         private byte WiggleDetectionCounter = 0;
         private byte WiggleDetectionThreshold = 60;
@@ -17,6 +17,7 @@ namespace TreeDance.Players
         private byte WigglePeriodThreshold = 60;
         private byte TreeGrowthCooldownTicks = 30;
         private byte TreeGrowthCooldown = 0;
+        
 
         //private bool CheckDirection(int playerDirection) => (playerDirection != prevDirection) ? true : false;
 
@@ -33,19 +34,19 @@ namespace TreeDance.Players
             }
             else
             {
-                WiggleDetectionCounter = (byte)Math.Clamp(WiggleDetectionCounter + 1, Byte.MinValue, Byte.MaxValue); // Otherwise increment up to limit of data type
+                WiggleDetectionCounter = (byte)System.Math.Clamp(WiggleDetectionCounter + 1, byte.MinValue, byte.MaxValue); // Otherwise increment up to limit of data type
             }
             prevDirection = Player.direction; // Then store the current direction as the previous direction
 
             if (WiggleDetectionCounter <= WiggleDetectionThreshold && TreeGrowthCooldown == 0) // If the time since the last change in direction is less than the threshold and there's no cooldown
             {
-                treeDanceLogger.Info("Attempted tree growth!"); // Attempt tree growth and apply cooldown
+                TreeDance.Log.Info("Attempted tree growth!"); // Attempt tree growth and apply cooldown
                 TreeGrowthCooldown = TreeGrowthCooldownTicks;
             }
 
             if (TreeGrowthCooldown > 0)
             {
-                TreeGrowthCooldown = (byte)Math.Clamp(WiggleDetectionCounter - 1, Byte.MinValue, Byte.MaxValue);
+                TreeGrowthCooldown = (byte)System.Math.Clamp(WiggleDetectionCounter - 1, byte.MinValue, byte.MaxValue);
             }
 
             //treeDanceLogger.Info(Counter.ToString());
