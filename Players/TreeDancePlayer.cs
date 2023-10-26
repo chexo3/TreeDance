@@ -1,13 +1,14 @@
 ﻿using log4net;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Runtime.Versioning;
 using Terraria;
 using Terraria.ModLoader;
 using TreeDance;
 
 namespace TreeDance.Players
 {
-    
+    [RequiresPreviewFeatures]
     public class TreeDancePlayer : ModPlayer
     {
         private int prevDirection = 0;
@@ -17,6 +18,8 @@ namespace TreeDance.Players
         private byte WigglePeriodThreshold = 60;
         private byte TreeGrowthCooldownTicks = 30;
         private byte TreeGrowthCooldown = 0;
+
+        private Counter<byte> byteCounter = new Counter<byte>(0, byte.MinValue, byte.MaxValue);
         
 
         //private bool CheckDirection(int playerDirection) => (playerDirection != prevDirection) ? true : false;
@@ -27,6 +30,7 @@ namespace TreeDance.Players
             //treeDanceLogger.Info(CheckDirection(Player.direction));
 
             // This code is very temporary
+
 
             if (Player.direction != prevDirection) // Reset counter if player changes direction
             {
@@ -48,6 +52,9 @@ namespace TreeDance.Players
             {
                 TreeGrowthCooldown = (byte)System.Math.Clamp(WiggleDetectionCounter - 1, byte.MinValue, byte.MaxValue);
             }
+
+
+            Counter<byte> test = new Counter<byte>(0, byte.MinValue, byte.MinValue);
 
             //treeDanceLogger.Info(Counter.ToString());
         }

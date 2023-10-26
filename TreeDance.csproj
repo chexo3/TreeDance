@@ -5,9 +5,11 @@
     <AssemblyName>TreeDance</AssemblyName>
     <TargetFramework>net6.0</TargetFramework>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>preview</LangVersion>
+	  <EnablePreviewFeatures>true</EnablePreviewFeatures>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="System.Runtime.Experimental" Version="6.0.2" />
     <PackageReference Include="tModLoader.CodeAssist" Version="0.1.*" />
   </ItemGroup>
 </Project>
