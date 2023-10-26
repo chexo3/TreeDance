@@ -12,7 +12,7 @@ namespace TreeDance.Players
     public class TreeDancePlayer : ModPlayer
     {
         private int prevDirection = 0;
-        private byte WiggleDetectionCounter = 0;
+        private Counter<byte> WiggleDetectionCounter = new Counter<byte>(0, byte.MinValue, byte.MaxValue);
         private byte WiggleDetectionThreshold = 60;
         private byte WigglePeriodCounter = 0;
         private byte WigglePeriodThreshold = 60;
@@ -24,7 +24,7 @@ namespace TreeDance.Players
 
         //private bool CheckDirection(int playerDirection) => (playerDirection != prevDirection) ? true : false;
 
-        public override void PostUpdate() // Update it is 12:23 AM I cba to write more comments so hopefully we remember the context here with what I have so far
+        public override void PostUpdate()
         {
 
             //treeDanceLogger.Info(CheckDirection(Player.direction));
@@ -34,27 +34,29 @@ namespace TreeDance.Players
 
             if (Player.direction != prevDirection) // Reset counter if player changes direction
             {
-                WiggleDetectionCounter = 0;
+                WiggleDetectionCounter.Value = 0;
             }
             else
             {
-                WiggleDetectionCounter = (byte)System.Math.Clamp(WiggleDetectionCounter + 1, byte.MinValue, byte.MaxValue); // Otherwise increment up to limit of data type
+                WiggleDetectionCounter.Value += 1; // Otherwise increment up to limit of data type
             }
             prevDirection = Player.direction; // Then store the current direction as the previous direction
 
-            if (WiggleDetectionCounter <= WiggleDetectionThreshold && TreeGrowthCooldown == 0) // If the time since the last change in direction is less than the threshold and there's no cooldown
+            TreeDance.Log.Info("Counter value: " + WiggleDetectionCounter.Value);
+
+            if (WiggleDetectionCounter.Value <= WiggleDetectionThreshold && TreeGrowthCooldown == 0) // If the time since the last change in direction is less than the threshold and there's no cooldown
             {
-                TreeDance.Log.Info("Attempted tree growth!"); // Attempt tree growth and apply cooldown
+                //TreeDance.Log.Info("Attempted tree growth!"); // Attempt tree growth and apply cooldown
                 TreeGrowthCooldown = TreeGrowthCooldownTicks;
             }
 
             if (TreeGrowthCooldown > 0)
             {
-                TreeGrowthCooldown = (byte)System.Math.Clamp(WiggleDetectionCounter - 1, byte.MinValue, byte.MaxValue);
+                TreeGrowthCooldown = (byte)System.Math.Clamp(TreeGrowthCooldown - 1, byte.MinValue, byte.MaxValue);
             }
 
 
-            Counter<byte> test = new Counter<byte>(0, byte.MinValue, byte.MinValue);
+            //Counter<byte> test = new Counter<byte>(0, byte.MinValue, byte.MinValue);
 
             //treeDanceLogger.Info(Counter.ToString());
         }

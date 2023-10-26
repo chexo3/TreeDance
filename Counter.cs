@@ -21,7 +21,14 @@ namespace TreeDance
 
         public T Value
         {
-            get => _value;
+            get
+            {
+                //Shit. Okay, so the problem here is that the operator += will first get this value, add 1 to it, and if it's 255 it'll overflow to 0.
+                //Which means when it then sets the value with the result of the operation, it's zero, which is of course within the clamp.
+                //I need to overload every operator... major refactoring time...
+                
+                return _value;
+            }
 
             set
             {
